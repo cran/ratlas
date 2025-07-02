@@ -33,6 +33,9 @@ library(viridis)
 library(dichromat)
 library(colorspace)
 
+library(systemfonts)
+require_font("Arial", fallback = "sans")
+
 ## ----init-plot, fig.cap = "(ref:init-plot-cap)"-------------------------------
 library(ggplot2)
 
@@ -46,18 +49,14 @@ ggplot(mtcars, aes(x = mpg, y = disp)) +
   geom_point(aes(color = factor(cyl))) +
   theme_atlas()
 
-## ----showtxtfnt, eval = FALSE-------------------------------------------------
-#  library(showtext)
-#  ## Loading Google fonts (https://fonts.google.com/)
-#  font_add_google("Montserrat", "montserrat")
-#  
-#  ## Automatically use showtext to render text
-#  showtext_auto()
+## ----showtxtfnt---------------------------------------------------------------
+library(systemfonts)
+require_font("Montserrat")
 
 ## ----theme-atlas-ms-ex-build, eval = FALSE------------------------------------
-#  ggplot(mtcars, aes(x = mpg, y = disp)) +
-#    geom_point(aes(color = factor(cyl))) +
-#    theme_atlas(base_family = "Montserrat")
+# ggplot(mtcars, aes(x = mpg, y = disp)) +
+#   geom_point(aes(color = factor(cyl))) +
+#   theme_atlas(base_family = "Montserrat")
 
 ## ----colorblindr-funcs, include = FALSE---------------------------------------
 # This is a placeholder until colorblindr is on CRAN. When that happens,
@@ -129,7 +128,7 @@ cvd_grid <- function(plot = last_plot(), severity = 1)
                      label_x = 0.01, label_y = 0.99, label_size = 12, label_fontface = "bold")
 }
 
-## ----disc-cvd, echo = FALSE, fig.asp = 1.618, fig.cap = "(ref:disc-cvd-cap)"----
+## ----disc-cvd, echo = FALSE, fig.asp = 1.618, fig.cap = "(ref:disc-cvd-cap)", warning = FALSE----
 p <- ggplot(mtcars, aes(x = mpg, y = disp)) +
   geom_point(aes(color = factor(cyl))) +
   theme_atlas()
@@ -201,19 +200,19 @@ ggplot(mtcars, aes(x = mpg, y = disp)) +
   theme_atlas()
 
 ## ----default-theme, fig.cap = "(ref:default-theme-cap)"-----------------------
-set_theme()
+set_theme(theme_atlas())
 
 ggplot(mtcars, aes(x = mpg, y = disp)) +
   geom_point(aes(color = factor(cyl)))
 
 ## ----eval = FALSE-------------------------------------------------------------
-#  p <- ggplot(mtcars, aes(x = mpg, y = disp)) +
-#    geom_point()
-#  
-#  ggsave2(plot = p, filename = "my-plot.png", path = "where/to/save")
+# p <- ggplot(mtcars, aes(x = mpg, y = disp)) +
+#   geom_point()
+# 
+# ggsave2(plot = p, filename = "my-plot.png", path = "where/to/save")
 
 ## ----eval = FALSE-------------------------------------------------------------
-#  p %>%
-#    ggsave2(filename = "my-plot.png", path = "where/to/save") %>%
-#    ggsave2(filename = "my-plot.pdf", path = "where/to/save")
+# p %>%
+#   ggsave2(filename = "my-plot.png", path = "where/to/save") %>%
+#   ggsave2(filename = "my-plot.pdf", path = "where/to/save")
 

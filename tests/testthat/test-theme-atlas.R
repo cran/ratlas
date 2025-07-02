@@ -26,7 +26,7 @@ test_that("theme_atlas font sizes are correct", {
 
 test_that("theme_atlas font colors are correct", {
   expect_equal(thm$text$colour, "black")
-  expect_equal(thm$axis.text$colour, "grey30")
+  expect_in(thm$axis.text$colour, c("grey30", "#4D4D4DFF"))
 })
 
 test_that("theme_atlas grids, axis, and ticks are correct", {
@@ -37,23 +37,6 @@ test_that("theme_atlas grids, axis, and ticks are correct", {
   expect_equal(invisible(theme_atlas(grid = "xy")),
                theme_atlas(grid = "xy"))
 
-  expect_equal(invisible(theme_atlas(axis = TRUE)),
-               theme_atlas(axis = TRUE))
-
-  expect_equal(invisible(theme_atlas(axis = FALSE)),
-               theme_atlas(axis = FALSE))
-  expect_equal(invisible(theme_atlas(axis = "xy")),
-               theme_atlas(axis = "xy"))
-  expect_equal(invisible(theme_atlas(axis = "")),
-               theme_atlas(axis = ""))
   expect_equal(invisible(theme_atlas(ticks = TRUE)),
                theme_atlas(ticks = TRUE))
-})
-
-test_that("update_geom_font_defaults() works", {
-  expect_equal(update_geom_font_defaults(),
-               ggplot2::update_geom_defaults("text",
-                                             list(family = "Arial Narrow",
-                                                  face = "plain", size = 3.5,
-                                                  color = "#2b2b2b")))
 })

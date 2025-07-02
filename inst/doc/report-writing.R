@@ -35,8 +35,8 @@ library(tibble)
 library(stringr)
 
 ## ----setup-tinytex, eval = FALSE----------------------------------------------
-#  install.packages("tinytex")
-#  tinytex::install_tinytex()
+# install.packages("tinytex")
+# tinytex::install_tinytex()
 
 ## ----create-report, echo = FALSE, out.width = "80%", fig.subcap = c("Create a new project.", "Create project in a new directory.",  "Choose the type of report."), fig.cap = "Process for creating a new report with {ratlas}."----
 include_graphics(c(here("vignettes", "images", "01-new-project.png"),

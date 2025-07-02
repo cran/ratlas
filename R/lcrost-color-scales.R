@@ -21,7 +21,7 @@ scale_fill_lcrost <- function(aesthetics = "fill", ...) {
 #'
 #' This is a color-blind friendly, qualitative scale with eight different
 #' colors. See [palette_lcrost] for details. The palette was first described in
-#' [this blog post](https://blog.datawrapper.de/colorblindness-part2/).
+#' [this blog post](https://www.datawrapper.de/blog/colorblindness-part2).
 #'
 #' @param use_black If `TRUE`, scale includes black, otherwise includes gray.
 #' @param order Numeric vector listing the order in which the colors should be
@@ -70,12 +70,6 @@ scale_lcrost <- function(aesthetics, use_black = FALSE, order = 1:8,
     values[ai] <- scales::alpha(values[ai], alpha[ai])
   }
 
-  pal <- function(n) {
-    if (n > length(values)) {
-      warning("Insufficient values in manual scale. ", n, " needed but only ",
-              length(values), " provided.", call. = FALSE)
-    }
-    values
-  }
+  pal <- scales::manual_pal(values, "colour")
   ggplot2::discrete_scale(aesthetics, palette = pal, ...)
 }
